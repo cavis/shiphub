@@ -1,0 +1,45 @@
+/*
+ * Shiphub stylez
+ *
+ * These are all on-top of the bootstrap stuff
+ */
+
+/* ==========================================================================
+   Sticky footer
+   ========================================================================== */
+html, body, .container, .content { height: 100%; }
+.container, .content { position: relative; }
+.proper-content { padding-top: 60px; /* >= navbar height */ }
+.wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -50px; /* same as the footer */ }
+.push { height: 50px; /* same as the footer */ }
+.footer-wrapper { position: relative; height: 50px; }
+
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+.navbar .brand { position: relative; padding-left: 64px; }
+.navbar .brand img { position: absolute; height: 38px; left: 22px; top: 0; }
+
+.well { border-color: #999; }
+.github-login { margin-top: 80px; text-align: center; }
+.github-login .btn { margin-top: 20px; }
+.repo-name { color: #cc0; }
+.site-name { margin-bottom: 0px; margin-top: -10px; }
+
+.output { position: relative; }
+.output pre { overflow-x: scroll; font-size: 12px; line-height: 16px; }
+td.info-type { font-weight: bold; padding-right: 10px; vertical-align: top; }
+
+.deploy-output pre b {
+  color: blue;
+}
+.deploy-output pre b.cursor {
+  background: url(../img/loading.gif) no-repeat 100% 50%;
+  display: inline-block;
+  padding: 5px 24px 5px 0;
+}
+.deploy-output pre b.complete {
+  display: inline-block;
+  padding: 5px 24px 5px 0;
+}

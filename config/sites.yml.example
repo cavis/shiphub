@@ -1,0 +1,19 @@
+#
+# Fill this out for your system
+#
+github:
+  repo_url: https://github.com/drewgeraets/housetalent
+  app_id: 30401c821464afd58643
+  app_secret: e4c86df679b7d9e9ae49a15bcc59ba343b714549
+  users: [ githubusername1, githubusername2 ]
+sites:
+  prod:
+    name: Production
+    path: /srv/www/mysite.com
+    url: http://mysite.com
+    rails_env: production
+  stage:
+    name: Staging
+    path: /srv/www/mysite.com
+    url: http://stage.mysite.com
+    rails_env: staging

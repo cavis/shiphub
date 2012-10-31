@@ -1,0 +1,69 @@
+.row
+  - @sites.each do |key, cfg|
+    .span6
+      .well
+        %h3.site-name= cfg['name']
+        %table.table-hover
+          %tr
+            %td.info-type Github
+            %td
+              %a{href: cfg['origin']}= cfg['origin']
+          %tr
+            %td.info-type Url
+            %td
+              %a{href: cfg['url']}= cfg['url']
+          %tr
+            %td.info-type Path
+            %td= cfg['path']
+          %tr
+            %td.info-type Branch
+            %td
+              - if cfg['branch'] == 'master'
+                %span.badge.badge-success= cfg['branch']
+              - else
+                %span.badge.badge-warning= cfg['branch']
+          %tr
+            %td.info-type Status
+            %td
+              - if cfg['status'] == ''
+                %span.badge.badge-success clean
+              - else
+                .output
+                  %pre.pre-scrollable= cfg['status']
+          %tr
+            %td.info-type Ping
+            %td.remote-ping{data: {url: cfg['url']}} (todo)
+          %tr
+            %td.info-type Deploy
+            %td.remote-deploy{data: {url: "/instance/#{key}"}}
+        %h4 Deploy Tools
+        .btn-toolbar
+          - if cfg['rails_env'] == 'production'
+            %a.btn.btn-primary.shaction.branch{href: "/instance/#{key}/branch/master"} Master
+          - else
+            .btn-group
+              %a.btn.btn-info.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+                Branch
+                %span.caret
+              %ul.dropdown-menu
+                - @branches.each do |branch|
+                  %li
+                    %a.shaction.branch{href: "/instance/#{key}/branch/#{branch.name}"}= branch.name
+                - if @branches.empty?
+                  %li
+                    %a{href: '#'} No Unmerged Branches
+            .btn-group
+              %a.btn.btn-success.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+                Pull Request
+                %span.caret
+              %ul.dropdown-menu
+                - @pullreqs.each do |pull|
+                  %li
+                    %a.shaction.pull{href: "/instance/#{key}/pull/#{pull.number}"}= "\##{pull.number}: #{pull.title}"
+                - if @pullreqs.empty?
+                  %li
+                    %a{href: '#'} No open pull requests
+        .output.deploy-output.hide
+          %b.deploy-output-label Deploy Output:
+          %pre.pre-scrollable
+

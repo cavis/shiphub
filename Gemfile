@@ -1,0 +1,9 @@
+source :rubygems
+gem 'sinatra'
+gem 'sinatra-reloader'
+gem 'sinatra-flash'
+gem 'sinatra-contrib'
+gem 'haml'
+gem 'octokit'
+gem 'rest-client'
+gem 'json'

@@ -1,0 +1,72 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title ShipHub
+    %meta{:content => "a Github deployment tool", :name => "description"}/
+    %meta{:content => "cavis", :name => "author"}/
+
+    / HTML5 shim (IE6-8)
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    / stylez
+    %link{:href => "/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "/css/bootstrap-responsive.min.css", :rel => "stylesheet"}/
+    %link{:href => "/css/shiphub.css", :rel => "stylesheet"}/
+
+    / icons
+    %link{:href => "images/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "images/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+    %link{:href => "images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
+    %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+
+  %body
+
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "/"}
+            %img{src:"img/shipit.png"}
+            ShipHub
+          .nav-collapse.collapse
+            - if authorized?
+              %ul.nav
+                %li
+                  %p.navbar-text.repo-name
+                    Shipping from #{@repo_url}
+              %ul.nav.login.pull-right
+                %li.dropdown
+                  %a.dropdown-toggle{href: '', data: {toggle: 'dropdown'}}
+                    Howdy, #{@login}
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => '/logout'} Logout
+
+    .container
+      .content
+        .wrapper
+          .proper-content
+            - flash.each do |name, msg|
+              - if msg.is_a?(String)
+                %div{class: "alert alert-#{name == :notice ? "success" : "error"}"}
+                  %a.close{'data-dismiss' => "alert"} x
+                  %div{id: "flash_#{name}"}= msg
+            .container
+              = yield
+          .push
+        .footer-wrapper
+          %footer.container
+            .row
+              .span4
+                %p &copy; cavis 2012
+
+    / javascriptz
+    %script{:src => "/js/jquery-1.8.2.min.js"}
+    %script{:src => "/js/bootstrap.min.js"}
+    %script{:src => "/js/shiphub.js"}
