@@ -2,7 +2,7 @@
 # Fill this out for your system
 #
 github:
-  repo_url: https://github.com/drewgeraets/housetalent
+  repo_url: https://github.com/githubusername1/mysite-repo
   app_id: 30401c821464afd58643
   app_secret: e4c86df679b7d9e9ae49a15bcc59ba343b714549
   users: [ githubusername1, githubusername2 ]
